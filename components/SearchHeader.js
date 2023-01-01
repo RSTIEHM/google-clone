@@ -4,6 +4,7 @@ import { SearchIcon, MicrophoneIcon, XIcon } from "@heroicons/react/solid"
 import { useRef } from "react"
 import User from "./User"
 import { SearchHeaderOptions } from "./SearchHeaderOptions"
+
 const SearchHeader = () => {
   const router = useRouter()
   const searchInputRef = useRef(null)
@@ -28,7 +29,7 @@ const search = (e) => {
           objectFit="contain" />
         <form className="flex border border-gray-200 rounded-full shadow-lg px-6 py-3 ml-10 mr-5 flex-grow max-w-3xl items-center">
           <input 
-          className="w-full focus:outline-none"
+            className="w-full focus:outline-none"
             type="text" 
             defaultValue={router.query.term} 
             ref={searchInputRef}

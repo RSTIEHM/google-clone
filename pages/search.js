@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import SearchHeader from '../components/SearchHeader'
-
+import Response from '../Response'
 
 const Search = ({results}) => {
   console.log(results)
@@ -20,7 +20,8 @@ const Search = ({results}) => {
 export default Search
 
 export async function getServerSideProps(ctx) {
-  const data = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${ctx.query.term}${ctx.query.searchType && "&searchType=image"}`).then((res) => res.json())
+  const mockData = true
+  const data = mockData ? Response : await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${ctx.query.term}${ctx.query.searchType && "&searchType=image"}`).then((res) => res.json())
   return {
     props: {
       results: data
